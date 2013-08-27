@@ -7,6 +7,7 @@ Uatu.on('after_tab_change', function(tab_page) {
       });
 
       var template_list_item = $('#template_list_item');
+      $('.list').html('');
 
       for (var i = 0; i < docentes.length; i++) {
         var docente = docentes[i];
@@ -22,7 +23,7 @@ Uatu.on('after_tab_change', function(tab_page) {
       });
 
       var template_list_item = $('#template_list_item');
-      $('.list').html();
+      $('.list').html('');
 
       for (var i = 0; i < cursos.length; i++) {
         var curso = cursos[i];
@@ -46,7 +47,6 @@ $(document).on('click', '.tab-item a', function(e) {
   var tab_page = $(this).data('tab_page');
 
   $.get('partials/' + tab_page + '.html', function(data) {
-    Uatu.fire('before_tab_change', null, tab_page);
     $('.content').html(data);
     Uatu.fire('after_tab_change', null, tab_page);
   });
