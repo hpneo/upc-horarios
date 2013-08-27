@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="styles/extras.css" />
 </head>
 <body>
+  <div id="landing"></div>
   <header class="bar-title">
     <h1 class="title">UPC - Horarios</h1>
   </header>
@@ -65,6 +66,18 @@
       var content = template.replace('{{nombre}}', docente.get('nombre'));
       $('.list').append(content);
     }
+
+    window.setTimeout(function() {
+      $('#landing').animate({
+        opacity : 0.0
+      }, {
+        duration : 500,
+        easing : 'ease-in-out',
+        complete : function() {
+          $(this).remove();
+        }
+      });
+    }, 1500);
   </script>
 </body>
 </html>
