@@ -16,6 +16,15 @@ UPC.data = {
     },
     "pchuetor" : {
       nombre : "Torres Arancivia, Eduardo Luciano"
+    },
+    "pcsiiana" : {
+      nombre : "Anache Pupo, Ilver"
+    },
+    "pcadaarr" : {
+      nombre : "Arrieta Quispe, Alejandro Enrique"
+    },
+    "pcmagbau" : {
+      nombre : "Bautista Vallejo, Gabriel Fortunato"
     }
   },
   areas : {
@@ -24,6 +33,12 @@ UPC.data = {
     },
     "CC" : {
       nombre : "Computacion e Informática"
+    },
+    "CA" : {
+      nombre : "Contabilidad y Administración"
+    },
+    "MA" : {
+      nombre : "Ciencias"
     }
   },
   cursos : {
@@ -46,6 +61,18 @@ UPC.data = {
     "HU187" : {
       nombre : "Temas de historia del Perú",
       area_id : "HU"
+    },
+    "SI253" : {
+      nombre : "Arquitectura del Software",
+      area_id : "CC"
+    },
+    "CA59" : {
+      nombre : "Contabilidad y Presupuestos",
+      area_id : "CA"
+    },
+    "MA255" : {
+      nombre : "Física 3",
+      area_id : "MA"
     }
   },
   secciones : {
@@ -87,6 +114,21 @@ UPC.data = {
       horario : {
         "M" : [16, 19]
       }
+    },
+    "SI253-1302-SW71" : {
+      curso_id : "SI253",
+      docente_id : "pcsiiana",
+      horario : {}
+    },
+    "CA59-1302-SW31" : {
+      curso_id : "CA59",
+      docente_id : "pcadaarr",
+      horario : {}
+    },
+    "MA255-1302-EL51" : {
+      curso_id : "MA255",
+      docente_id : "pcmagbau",
+      horario : {}
     }
   }
 };
