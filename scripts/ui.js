@@ -19,12 +19,28 @@ Uatu.on('after_tab_change', function(tab_page, collection) {
   });
 });
 
-Uatu.on('after_swap', function(collection_type, model, collection) {
+var translate3d = function(element, x, y, z) {
+  element.css('-webkit-transform', 'translate3d(' + x +',' + y + ', ' + z + ')');
+  element.css('-moz-transform', 'translate3d(' + x +',' + y + ', ' + z + ')');
+  element.css('-ms-transform', 'translate3d(' + x +',' + y + ', ' + z + ')');
+  element.css('-o-transform', 'translate3d(' + x +',' + y + ', ' + z + ')');
+  element.css('transform', 'translate3d(' + x +',' + y + ', ' + z + ')');
+}
+
+Uatu.on('before_swap', function(collection_type, model, collection) {
   UPC.views.loadTemplate('simple_list', function(parent_content) {
     UPC.views.loadTemplate('list_item_section', function(content) {
-      console.log(collection[0].get('curso'));
       var content = UPC.views.populateTemplate(content, collection);
-      $('.content').html(parent_content).find('.list').append(content);
+      content = $(parent_content).filter('.list').attr('data-collection', 'secciones').append(content);
+      
+      translate3d($('.content').children().first(), '0%', 0, 0);
+      translate3d($('.content').children().first().addClass('slide'), '-100%', 0, 0);
+
+      $('.content').prepend(content.addClass('slide'));
+      translate3d(content, '100%', 0, 0);
+      window.setTimeout(function() {
+        translate3d(content, '0%', 0, 0);
+      }, 25);
     });
   });
 });
@@ -72,7 +88,11 @@ $(document).on('click', '.list-item a', function(e) {
       var model = UPC.models.Curso.find(id);
       var collection = model.get('secciones');
     break;
+    case 'secciones':
+      var model = UPC.models.Seccion.find(id);
+      collection = [];
+    break;
   }
 
-  Uatu.fire('after_swap', null, collection_type, model, collection);
+  Uatu.fire('before_swap', null, collection_type, model, collection);
 });
