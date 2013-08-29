@@ -12,3 +12,7 @@
   z-index: 11;
   opacity: 1.0;
 }
+
+.hidden {
+  opacity: 0.0;
+}

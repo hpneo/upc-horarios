@@ -10,9 +10,9 @@
 <body>
   <div id="landing"></div>
   <header class="bar-title">
-    <!-- <a class="button-prev" href="#">
+    <a class="button-prev hidden" href="#">
       Previous
-    </a> -->
+    </a>
     <h1 class="title">UPC - Horarios</h1>
   </header>
   <nav class="bar-tab">
@@ -29,16 +29,10 @@
           <div class="tab-label">Cursos</div>
         </a>
       </li>
-      <li class="tab-item">
-        <a href="#" data-tab-page="buscar">
-          <img class="tab-icon" src="images/icon-search.png" />
-          <div class="tab-label">Buscar</div>
-        </a>
-      </li>
     </ul>
   </nav>
   <div class="content">
-    <ul class="list"></ul>
+    <ul class="list" id="docentes"></ul>
   </div>
   <script type="text/javascript" src="scripts/upc.data.js"></script>
   <script type="text/javascript" src="scripts/upc.models.js"></script>
@@ -61,13 +55,13 @@
   <script type="text/html" id="template_list_item_section">
     <li class="list-item" data-id="{{id}}">
       <a href="#">
-        {{id}} - {{curso.nombre}}
+        {{curso.nombre}} - {{id}}
         <span class="chevron"></span>
       </a>
     </li>
   </script>
   <script type="text/html" id="template_secciones">
-    <div class="segmented-controller-container">
+    <div class="segmented-controller-container" id="horario">
       <ul class="segmented-controller">
         <li>
           <a href="#L">L</a>
@@ -92,32 +86,32 @@
         </li>
       </ul>
 
-      <ul class="inset list" id="L">
-        <li class="list-divider">Horario {{id}}: Lunes</li>
+      <ul class="inset list" id="L" title="{{curso.nombre}} : Lunes">
+        <li class="list-divider">{{curso.nombre}} - {{id}}: Lunes</li>
       </ul>
 
-      <ul class="inset list" id="M">
-        <li class="list-divider">Horario {{id}}:  Martes</li>
+      <ul class="inset list" id="M" title="{{curso.nombre}} : Martes">
+        <li class="list-divider">{{curso.nombre}} - {{id}}: Martes</li>
       </ul>
 
-      <ul class="inset list" id="X">
-        <li class="list-divider">Horario {{id}}:  Miércoles</li>
+      <ul class="inset list" id="X" title="{{curso.nombre}} : Miércoles">
+        <li class="list-divider">{{curso.nombre}} - {{id}}:  Miércoles</li>
       </ul>
 
-      <ul class="inset list" id="J">
-        <li class="list-divider">Horario {{id}}:  Jueves</li>
+      <ul class="inset list" id="J" title="{{curso.nombre}} : Jueves">
+        <li class="list-divider">{{curso.nombre}} - {{id}}:  Jueves</li>
       </ul>
 
-      <ul class="inset list" id="V">
-        <li class="list-divider">Horario {{id}}:  Viernes</li>
+      <ul class="inset list" id="V" title="{{curso.nombre}} : Viernes">
+        <li class="list-divider">{{curso.nombre}} - {{id}}:  Viernes</li>
       </ul>
 
-      <ul class="inset list" id="S">
-        <li class="list-divider">Horario {{id}}:  Sábado</li>
+      <ul class="inset list" id="S" title="{{curso.nombre}} : Sábado">
+        <li class="list-divider">{{curso.nombre}} - {{id}}:  Sábado</li>
       </ul>
 
-      <ul class="inset list" id="D">
-        <li class="list-divider">Horario {{id}}:  Domingo</li>
+      <ul class="inset list" id="D" title="{{curso.nombre}} : Domingo">
+        <li class="list-divider">{{curso.nombre}} - {{id}}:  Domingo</li>
       </ul>
     </div>
   </script>
