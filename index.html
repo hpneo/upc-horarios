@@ -10,11 +10,11 @@
 <body>
   <div id="landing"></div>
   <header class="bar-title">
+    <!-- <a class="button-prev" href="#">
+      Previous
+    </a> -->
     <h1 class="title">UPC - Horarios</h1>
   </header>
-  <div class="content">
-    <ul class="list"></ul>
-  </div>
   <nav class="bar-tab">
     <ul class="tab-inner">
       <li class="tab-item active">
@@ -37,16 +37,32 @@
       </li>
     </ul>
   </nav>
+  <div class="content">
+    <ul class="list"></ul>
+  </div>
   <script type="text/javascript" src="scripts/upc.data.js"></script>
   <script type="text/javascript" src="scripts/upc.models.js"></script>
+  <script type="text/javascript" src="scripts/upc.views.js"></script>
   <script type="text/javascript" src="scripts/zepto.js"></script>
   <script type="text/javascript" src="scripts/uatu.js"></script>
   <script type="text/javascript" src="scripts/ratchet.js"></script>
   <script type="text/javascript" src="scripts/ui.js"></script>
+  <script type="text/html" id="template_simple_list">
+    <ul class="list">
+    </ul>
+  </script>
   <script type="text/html" id="template_list_item">
-    <li>
+    <li class="list-item" data-id="{{id}}">
       <a href="#">
         {{nombre}}
+        <span class="chevron"></span>
+      </a>
+    </li>
+  </script>
+  <script type="text/html" id="template_list_item_section">
+    <li class="list-item" data-id="{{id}}">
+      <a href="#">
+        {{id}} - {{curso.nombre}}
         <span class="chevron"></span>
       </a>
     </li>
@@ -58,14 +74,10 @@
       return a.get('nombre').localeCompare(b.get('nombre'));
     });
 
-    var template_list_item = $('#template_list_item');
-
-    for (var i = 0; i < docentes.length; i++) {
-      var docente = docentes[i];
-      var template = template_list_item.html();
-      var content = template.replace('{{nombre}}', docente.get('nombre'));
-      $('.list').append(content);
-    }
+    UPC.views.loadTemplate('list_item', function(content) {
+      var content = UPC.views.populateTemplate(content, docentes);
+      $('.list').attr('data-collection', 'docentes').append(content);
+    });
 
     window.setTimeout(function() {
       $('#landing').animate({
