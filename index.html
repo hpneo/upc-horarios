@@ -45,7 +45,6 @@
   <script type="text/javascript" src="scripts/upc.views.js"></script>
   <script type="text/javascript" src="scripts/zepto.js"></script>
   <script type="text/javascript" src="scripts/uatu.js"></script>
-  <script type="text/javascript" src="scripts/ratchet.js"></script>
   <script type="text/javascript" src="scripts/ui.js"></script>
   <script type="text/html" id="template_simple_list">
     <ul class="list">
@@ -66,6 +65,61 @@
         <span class="chevron"></span>
       </a>
     </li>
+  </script>
+  <script type="text/html" id="template_secciones">
+    <div class="segmented-controller-container">
+      <ul class="segmented-controller">
+        <li>
+          <a href="#L">L</a>
+        </li>
+        <li>
+          <a href="#M">M</a>
+        </li>
+        <li>
+          <a href="#X">X</a>
+        </li>
+        <li>
+          <a href="#J">J</a>
+        </li>
+        <li>
+          <a href="#V">V</a>
+        </li>
+        <li>
+          <a href="#S">S</a>
+        </li>
+        <li>
+          <a href="#D">D</a>
+        </li>
+      </ul>
+
+      <ul class="inset list" id="L">
+        <li class="list-divider">Horario {{id}}: Lunes</li>
+      </ul>
+
+      <ul class="inset list" id="M">
+        <li class="list-divider">Horario {{id}}:  Martes</li>
+      </ul>
+
+      <ul class="inset list" id="X">
+        <li class="list-divider">Horario {{id}}:  Miércoles</li>
+      </ul>
+
+      <ul class="inset list" id="J">
+        <li class="list-divider">Horario {{id}}:  Jueves</li>
+      </ul>
+
+      <ul class="inset list" id="V">
+        <li class="list-divider">Horario {{id}}:  Viernes</li>
+      </ul>
+
+      <ul class="inset list" id="S">
+        <li class="list-divider">Horario {{id}}:  Sábado</li>
+      </ul>
+
+      <ul class="inset list" id="D">
+        <li class="list-divider">Horario {{id}}:  Domingo</li>
+      </ul>
+    </div>
   </script>
   <script type="text/javascript">
     var docentes = UPC.models.Docente.all();
